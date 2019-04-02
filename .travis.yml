@@ -1,0 +1,14 @@
+language: c
+script: make && make fs.img
+deploy:
+  provider: releases
+  api_key:
+    secure: qOvPA+HyUzZ0zGWnTkiK7qjH6Mnhr6HMw+Ngm5yQKHoZSHJc2kUnLHE3cvx0Q6skvjr9ZyH8QkxZWKUnc++9aLidPcU9Sq7iW/uhW96lrf1MVsUdkvGUROLM1Fk9bKcUgELORZsXRrNQCj/0AJs1j+hDdO1MRHu19JQZ7vMz3DoKEFq8GhDi4grX6gVUHaB0J0AlEumiKr/erLuZrhwBaShoza4F3HWTZfK62rcaG7JRW6obUc7a8QAGhpxR09BHOBFSxzjdtA84yO840l5z/dNaVDRef7i+dxMZfGdwaH+bOfSdv+b7/6iTqRJnDZrGiNP+/gnisPJuJvum0zZS9c7gMFdcGXOKe1agrAn3N1mo0N08E/WrDHqeyz8zc0Rfm9y1lQNc9Re3TUC1xWjD8MQktxGpV3vJZNmKg+lH78WQiXJntMqiHqNAT1vCbcz7QLk30nIZGK5CF7kdibWxXSFmH0PQQGtzqxCIxWNje8LmC/sOyseMTYQUdb+YRDuec1D0EEpdZW1AKarcrknTTij7MTXOTWzexE7feRhbsISkrcW9iB3EhTtHn9XTVzYSjRzuLRu08EUvsuXf7cCAC8MkLonrV7UJkoHLiUiDRbzsydq2lY7yQaJojDdGEeqyf2pCtbL4b0A+wo3yzAHZG4cK0cIZQJvybDhq3Z9zdHA=
+  file:
+    - fs.img
+    - xv6.img
+  skip_cleanup: true
+  on:
+    repo: NicoNicoo/xv6-public
+    branch: project_1
+    tags: true
