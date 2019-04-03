@@ -7,4 +7,5 @@ int
 main(void)
 {
   printf(1,"El numero de procesos corriendo es: %d\n", getprocs());
+  exit();
 }
