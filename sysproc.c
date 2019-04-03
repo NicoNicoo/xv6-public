@@ -7,15 +7,6 @@
 #include "mmu.h"
 #include "proc.h"
 
-struct {
-  struct spinlock lock;
-  struct proc proc[NPROC];
-} ptable;
-
-static struct proc *initproc;
-
-int nextpid = 1;
-
 int
 sys_fork(void)
 {
@@ -103,6 +94,7 @@ sys_uptime(void)
 int
 sys_getprocs(void)
 {
+  ptable;
   struct proc *p;
   acquire(&ptable.lock);
   int cont= 0;
