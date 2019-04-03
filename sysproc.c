@@ -95,6 +95,7 @@ int
 sys_getprocs(void)
 {
   struct proc *p;
+  acquire(&ptable.lock);
   int cont= 0;
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
     if(p->state != UNUSED || p->state !=ZOMBIE)
@@ -102,5 +103,6 @@ sys_getprocs(void)
       cont=cont+1;
     }
   }
+  release(&ptable.lock);
   return cont;
 }
