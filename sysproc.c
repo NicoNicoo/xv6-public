@@ -89,18 +89,3 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
-
-// return how many running process there is
-int
-sys_getprocs(void)
-{
-  struct proc *p;
-  int cont= 0
-  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-    if(p->state != UNUSED || p->state !=ZOMBIE)
-    {
-      cont=cont+1;
-    }
-  }
-  return cont;
-}
