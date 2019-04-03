@@ -13,8 +13,6 @@ struct {
   struct proc proc[NPROC];
 } ptable;
 
-static struct proc *initproc;
-
 int
 sys_fork(void)
 {
