@@ -7,6 +7,30 @@
 #include "mmu.h"
 #include "proc.h"
 
+struct {
+  struct spinlock lock;
+  struct proc proc[NPROC];
+} ptable;
+
+static struct proc *initproc;
+
+int nextpid = 1;
+extern void forkret(void);
+extern void trapret(void);
+
+static void wakeup1(void *chan);
+
+struct proc*
+myproc(void) {
+  struct cpu *c;
+  struct proc *p;
+  pushcli();
+  c = mycpu();
+  p = c->proc;
+  popcli();
+  return p;
+}
+
 int
 sys_fork(void)
 {
@@ -94,14 +118,32 @@ sys_uptime(void)
 int
 sys_getprocs(void)
 {
-
+  static char *states[] = {
+  [UNUSED]    "unused",
+  [EMBRYO]    "embryo",
+  [SLEEPING]  "sleep ",
+  [RUNNABLE]  "runble",
+  [RUNNING]   "run   ",
+  [ZOMBIE]    "zombie"
+  };
+  int i;
   struct proc *p;
-  int cont= 0;
+  char *state;
+  uint pc[10];
+
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-    if(p->state != UNUSED || p->state !=ZOMBIE)
-    {
-      cont=cont+1;
+    if(p->state != UNUSED || p->state != UNUSED)
+      continue;
+    if(p->state >= 0 && p->state < NELEM(states) && states[p->state])
+      state = states[p->state];
+    else
+      state = "???";
+    cprintf("%d %s %s", p->pid, state, p->name);
+    if(p->state != SLEEPING){
+      getcallerpcs((uint*)p->context->ebp+2, pc);
+      for(i=0; i<10 && pc[i] != 0; i++)
+        cprintf(" %p", pc[i]);
     }
+    cprintf("\n");
   }
-  return cont;
 }
