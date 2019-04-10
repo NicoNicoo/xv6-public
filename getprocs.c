@@ -1,5 +1,4 @@
 #include "types.h"
-#include "proc.h"
 #include "user.h"
 #include "stat.h"
 
