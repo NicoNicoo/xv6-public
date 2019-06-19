@@ -113,13 +113,11 @@ sys_getprocs(void)
 }
 
 int
-sys_physicaladdress(void)
+sys_physicaladdress(char *viraddr)
 {
-  char *viraddr;
+  argstr(0, &viraddr);
   int physicaddr;
   pde_t *pagedir, *pagetab, *entry;
-
-  cprintf(1,"introducir direccion virtual: %s\n",viraddr);
 
   entry = &pagedir[PDX(viradd)];
   if(*entry & PTE_P)
