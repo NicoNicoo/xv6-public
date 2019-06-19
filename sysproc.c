@@ -96,7 +96,7 @@ sys_uptime(void)
   return xticks;
 }
 
-// return how many running process there is
+// funcion  que devuelve cuantos procesos estan en uso (tarea1)
 int
 sys_getprocs(void)
 {
