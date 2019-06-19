@@ -314,8 +314,7 @@ static
 unsigned long
 rannum(unsigned long num)
 {
-  unsigned long a=27613874961;
-  unsigned long b=45618919848;
+  unsigned long a=246138749,b=418919848;
   int x = (num * a) % b;
   return x;
 
