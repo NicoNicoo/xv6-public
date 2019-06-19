@@ -115,9 +115,11 @@ sys_getprocs(void)
 int
 sys_physicaladdress(char *viraddr)
 {
+  struct proc *curproc = myproc();
   argstr(0, &viraddr);
   int physicaddr;
   pde_t *pagedir, *pagetab, *entry;
+  pagedir= curproc->pgdir;
 
   entry = &pagedir[PDX(viradd)];
   if(*entry & PTE_P)
