@@ -111,3 +111,31 @@ sys_getprocs(void)
   }
   return cont;
 }
+
+int
+sys_physicaladdress(void)
+{
+  char *viraddr;
+  int physicaddr;
+  viraddr=argv[1];
+  pde_t *pagedir, *pagetab, *entry;
+
+  printf(1,"introducir direccion virtual",viraddr);
+
+  entry = &pagedir[PDX(viradd)];
+  if(*entry & PTE_P)
+  {
+    pagetab=(pte_t*)V2P(PTE_ADDR(*entry));
+  }
+  else
+  {
+    cprintf("no existe esta direccion virtual")
+    return 1
+  }
+  pte_t *pte;
+  pte= &pagetab[PTX(viraddr)];
+  physicaddr=(char*)P2V(PTE_ADDR(*pte));
+
+  cprintf("DIreccion fisica: %d\n", physicaddr);
+  return 0
+}
