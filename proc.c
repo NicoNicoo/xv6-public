@@ -315,8 +315,8 @@ unsigned long
 rannum(unsigned long num)
 {
   unsigned long a=246138749,b=418919848;
-  int x = (num * a) % b;
-  return x;
+  int x = (num * a) + b;
+  return ((unsigned int)(next/73593) % 52843) % num +1;
 
 }
 //PAGEBREAK: 42
@@ -338,7 +338,7 @@ scheduler(void)
   for(;;){
     sti();
 
-    int winner = rannum(number_tickets);
+    int winner = rannum(number_tickets);              //funcion para crear random numero
     if(number_tickets<winner)
     {
       winner %= number_tickets;
