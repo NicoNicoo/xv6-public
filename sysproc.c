@@ -133,7 +133,7 @@ sys_physicaladdress(char *viraddr)
   }
   pte_t *pte;
   pte= &pagetab[PTX(viraddr)];
-  physicaddr=(char*)V2P(PTE_ADDR(*pte));
+  physicaddr=(char*)P2V(PTE_ADDR(*pte));
 
   cprintf("DIreccion fisica: %d\n", physicaddr);
   return 0;
