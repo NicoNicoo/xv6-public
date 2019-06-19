@@ -341,7 +341,7 @@ scheduler(void)
     int winner = rannum(number_tickets);
     if(number_tickets<winner)
     {
-      winner %= number_tickets
+      winner %= number_tickets;
     }
     for(p=ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state == RUNNABLE){
