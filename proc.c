@@ -335,12 +335,12 @@ scheduler(void)
     {
       winner %= number_tickets
     }
-    for(p=ptable.proc; p<ptable.proc[NPROC]; p++){
+    for(p=ptable.proc; p < &ptable.proc[NPROC]; p++){
       if(p->state == RUNNABLE){
-        winner-=p->tickets
+        winner-=p->tickets;
       }
 	    if(p->state != RUNNABLE || winner>=0){
-        continue
+        continue;
       }
     }
     release(&ptable.lock);
