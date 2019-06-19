@@ -310,7 +310,15 @@ wait(void)
     sleep(curproc, &ptable.lock);  //DOC: wait-sleep
   }
 }
+static
+unsigned long
+rannum(unsigned long num)
+{
+  unsigned long a=27613874961, b=45618919848
+  int x= (num*a)%b
+  return x
 
+}
 //PAGEBREAK: 42
 // Per-CPU process scheduler.
 // Each CPU calls scheduler() after setting itself up.
@@ -346,15 +354,7 @@ scheduler(void)
     release(&ptable.lock);
   }
 }
-static
-unsigned long
-rannum(unsigned long num)
-{
-  unsigned long a=27613874961, b=45618919848
-  int x= (num*a)%b
-  return x
 
-}
 
 // Enter scheduler.  Must hold only ptable.lock
 // and have changed proc->state. Saves and restores
