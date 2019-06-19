@@ -6,6 +6,9 @@
 #include "x86.h"
 #include "proc.h"
 #include "spinlock.h"
+#include "stdio.h"
+#include "stdlib.h"
+#include "time.h"
 
 struct {
   struct spinlock lock;
@@ -330,7 +333,6 @@ scheduler(void)
   for(;;){
     sti();
 
-    int counter = 0;
     srand(time(NULL));
     int winner = rand()%(number_tickets);
     for(p=ptable.proc; p<ptable.proc[NPROC]; p++){
