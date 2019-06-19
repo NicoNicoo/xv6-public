@@ -121,7 +121,7 @@ sys_physicaladdress(char *viraddr)
   pde_t *pagedir, *pagetab, *entry;
   pagedir= curproc->pgdir;
 
-  entry = &pagedir[PDX(viradd)];
+  entry = &pagedir[PDX(viraddr)];
   if(*entry & PTE_P)
   {
     pagetab=(pte_t*)P2V(PTE_ADDR(*entry));
