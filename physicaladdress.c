@@ -10,5 +10,5 @@ int main(int argc,char *argv[])
     printf(1,"introducir direccion virtual: %s\n",viraddr);
     physicaladdress(viraddr);
 
-    exit(;)
+    exit();
 }
