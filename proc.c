@@ -315,7 +315,7 @@ unsigned long
 rannum(unsigned long num)
 {
   unsigned long a=27613874961, b=45618919848;
-  int x= (num*a)%b;
+  int x = (num * a) % b;
   return x;
 
 }
