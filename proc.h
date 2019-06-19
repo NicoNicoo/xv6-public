@@ -36,7 +36,8 @@ enum procstate { UNUSED, EMBRYO, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
 // Per-process state
 struct proc {
-  int tickets=4;                 // numero de tickets del proceso(tarea2)
+  int tickets;                 // numero de tickets del proceso(tarea2)
+  tickets=4;
   uint sz;                     // Size of process memory (bytes)
   pde_t* pgdir;                // Page table
   char *kstack;                // Bottom of kernel stack for this process
