@@ -6,9 +6,9 @@
 #include "x86.h"
 #include "proc.h"
 #include "spinlock.h"
-#include stdio.h
-#include stdlib.h
-#include time.h
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 struct {
   struct spinlock lock;
