@@ -330,7 +330,6 @@ scheduler(void)
   for(;;){
     sti();
 
-    srand(time(NULL));
     int winner = rannum(number_tickets);
     if(number_tickets<winner)
     {
