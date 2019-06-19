@@ -331,7 +331,7 @@ scheduler(void)
     sti();
 
     int counter = 0;
-    srand(time(null));
+    srand(time(NULL));
     int winner = rand()%(number_tickets);
     for(p=ptable.proc; p<ptable.proc[NPROC]; p++){
       if(p->state == RUNNABLE){
