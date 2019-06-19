@@ -330,7 +330,7 @@ scheduler(void)
   for(;;){
     sti();
 
-    int counter = O;
+    int counter = 0;
     srand(time(null));
     int winner = rand()%(number_tickets);
     for(p=ptable.proc; p<ptable.proc[NPROC]; p++){
