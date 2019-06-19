@@ -125,17 +125,17 @@ sys_physicaladdress(void)
   entry = &pagedir[PDX(viradd)];
   if(*entry & PTE_P)
   {
-    pagetab=(pte_t*)V2P(PTE_ADDR(*entry));
+    pagetab=(pte_t*)P2V(PTE_ADDR(*entry));
   }
   else
   {
-    cprintf("no existe esta direccion virtual")
-    return 1
+    cprintf("no existe esta direccion virtual");
+    return 1;
   }
   pte_t *pte;
   pte= &pagetab[PTX(viraddr)];
-  physicaddr=(char*)P2V(PTE_ADDR(*pte));
+  physicaddr=(char*)V2P(PTE_ADDR(*pte));
 
   cprintf("DIreccion fisica: %d\n", physicaddr);
-  return 0
+  return 0;
 }
