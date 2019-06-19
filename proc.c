@@ -331,7 +331,11 @@ scheduler(void)
     sti();
 
     srand(time(NULL));
-    int winner = random()%(number_tickets);
+    int winner = rannum(number_tickets);
+    if(number_tickets<winner)
+    {
+      winner %= number_tickets
+    }
     for(p=ptable.proc; p<ptable.proc[NPROC]; p++){
       if(p->state == RUNNABLE){
         winner-=p->tickets
@@ -342,6 +346,15 @@ scheduler(void)
     }
     release(&ptable.lock);
   }
+}
+static
+unsigned long
+rannum(unsigned long num)
+{
+  unsigned long a=27613874961, b=45618919848
+  int x= (num*a)%b
+  return x
+
 }
 
 // Enter scheduler.  Must hold only ptable.lock
