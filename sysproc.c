@@ -119,7 +119,7 @@ sys_physicaladdress(void)
   int physicaddr;
   pde_t *pagedir, *pagetab, *entry;
 
-  cprintf(1,"introducir direccion virtual: \n",viraddr);
+  cprintf(1,"introducir direccion virtual: %s\n",viraddr);
 
   entry = &pagedir[PDX(viradd)];
   if(*entry & PTE_P)
