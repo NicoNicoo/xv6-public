@@ -113,7 +113,7 @@ sys_getprocs(void)
 }
 
 int
-sys_physicaladdress(char *viraddr)
+sys_physicaladdress(char *viraddr) //funcion que devuelve la direccion fisica (tarea3)
 {
   struct proc *curproc = myproc();
   argstr(0, &viraddr);
