@@ -117,6 +117,7 @@ sys_physicaladdress(void)
 {
   char *viraddr;
   int physicaddr;
+  char *argv[];
   viraddr=argv[1];
   pde_t *pagedir, *pagetab, *entry;
 
